@@ -11,59 +11,83 @@ namespace Bank.ATMConsole
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine(" ________  ______  _______    ______  ________        _______    ______   __    __  __    __ ");
+            Console.WriteLine(@"|        \|      \|       \  /      \|        \      |       \  /      \ |  \  |  \|  \  /  \");
+            Console.WriteLine(@"| $$$$$$$$ \$$$$$$| $$$$$$$\|  $$$$$$\\$$$$$$$$      | $$$$$$$\|  $$$$$$\| $$\ | $$| $$ /  $$");
+            Console.WriteLine(@"| $$__      | $$  | $$__| $$| $$___\$$  | $$         | $$__/ $$| $$__| $$| $$$\| $$| $$/  $$ ");
+            Console.WriteLine(@"| $$  \     | $$  | $$    $$ \$$    \   | $$         | $$    $$| $$    $$| $$$$\ $$| $$  $$  ");
+            Console.WriteLine(@"| $$$$$     | $$  | $$$$$$$\ _\$$$$$$\  | $$         | $$$$$$$\| $$$$$$$$| $$\$$ $$| $$$$$\  ");
+            Console.WriteLine(@"| $$       _| $$_ | $$  | $$|  \__| $$  | $$         | $$__/ $$| $$  | $$| $$ \$$$$| $$ \$$\ ");
+            Console.WriteLine(@"| $$      |   $$ \| $$  | $$ \$$    $$  | $$         | $$    $$| $$  | $$| $$  \$$$| $$  \$$\");
+            Console.WriteLine(@" \$$       \$$$$$$ \$$   \$$  \$$$$$$    \$$    ______\$$$$$$$  \$$   \$$ \$$   \$$ \$$   \$$");
+            string ofNick = @"                                              /      \                                      
+                                      ______ |  $$$$$$\                                     
+                                     /      \ | $$_  \$$                                     
+                                    |  $$$$$$\| $$ \                                         
+                                    | $$  | $$| $$$$                                         
+                                    | $$__ / $$| $$                                           
+                                     \$$    $$| $$                                           
+                                      \$$$$$$  \$$                                           
+                               __ __  ______ ______   __ __
+                              |  \  |  \|      \ /      \ |  \  /  \                         
+                              | $$\ | $$ \$$$$$$|  $$$$$$\| $$ /  $$                         
+                              | $$$\| $$  | $$  | $$   \$$| $$/  $$                          
+                              | $$$$\ $$  | $$  | $$      | $$  $$                           
+                              | $$\$$ $$  | $$  | $$   __ | $$$$$\                           
+                              | $$ \$$$$ _ | $$_ | $$__ /  \| $$ \$$\                          
+                              | $$  \$$$|   $$ \ \$$    $$| $$  \$$\                         
+                               \$$   \$$ \$$$$$$  \$$$$$$  \$$   \$$  ";
+
+            Console.WriteLine(ofNick);
+
+            Console.WriteLine("Press enter to continue...");
+            Console.ReadKey();
+            Console.Clear();
+
+
             AuthService welcome = new AuthService();
 
             Console.WriteLine("Please enter your account number:");
             int acctNum = int.Parse(Console.ReadLine());
 
+            Console.Clear();
+
             Console.WriteLine("Please enter your pin");
             int pin = int.Parse(Console.ReadLine());
 
+            Console.Clear();
+
+            welcome.VerifyUser(acctNum, pin);
 
 
-            welcome.VerifyUser( acctNum, pin);
 
 
-          
-            
 
             int choice = int.Parse(Console.ReadLine());
+
+            Console.Clear();           
+
+            
 
             switch (choice)
             {
 
-                
+
                 case 1:
                     AccountController.GetAccount(acctNum, pin);
                     break;
-                //TODO: write method handle case 2
+                
 
                 case 2:
-                    Console.WriteLine("Please enter the amount you would like to withdrawl.");
-                    int withdrawlAmt = int.Parse(Console.ReadLine());
-
-                    if (withdrawlAmt % 20 != 0)
-                    {
-                        Console.WriteLine("Please enter an amount that is a multiple of 20");
-                    }
-
-                    else if (withdrawlAmt > 0) // replace 0 with Account Balance
-                    {
-                        Console.WriteLine("Insufficient funds");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Please collect your cash.\n" + "Your new balance is:$");
-                        
-                    }
+                    AccountController.Withdrawl(acctNum, pin);
+                                                          
 
                     break;
 
-                //TODO: write method wot handle deposit
+                
                 case 3:
-                    Console.WriteLine("Please enter the amount you wuold like to deposit");
-                    int depositAmt = int.Parse(Console.ReadLine());
-                    Console.WriteLine($"You have entered {depositAmt}. Your new balance is:$" );
+                    
+                    AccountController.Deposit(acctNum, pin);
 
                     break;
 
@@ -72,6 +96,8 @@ namespace Bank.ATMConsole
                     break;
             }
 
+
+            
 
 
             Console.ReadLine();

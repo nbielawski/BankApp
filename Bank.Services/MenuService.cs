@@ -11,13 +11,15 @@ namespace Bank.Services
         public void ListOptions()
         {
             Console.Clear();
-            Console.WriteLine("Welcome!\n\n\n"+
+            Console.WriteLine("Welcome!\n\n\n" +
                 "Display Balnace.................1\n"
                 + "Withdrawl.................2\n"
                 + "Deposit.................3\n"
                 + "End Session.................4"
                 );
         }
+
+       
 
     }
 }
